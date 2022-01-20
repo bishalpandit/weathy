@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 export default function Home() {
 
   const [location, setLocation] = useState('')
-  const [data, setData ] = useState({})
-  const [click, setClick ] = useState(false)
+  const [data, setData] = useState({})
+  const [click, setClick] = useState(false)
 
   useEffect(() => {
     handleGetWeather()
@@ -26,21 +26,25 @@ export default function Home() {
       { city },
       config
     )
-      console.log(data);
-    if(data) {
+    console.log(data);
+    if (data) {
       setData(data)
     }
   }
 
   const { temp_value, city, temp_desc } = data
-  
+
   return (
-    <div className='flex flex-col items-center md:flex-row space-y-10 md:space-x-4 px-18 justify-evenly mt-10'>
+    <div className='relative flex flex-col items-center md:flex-row space-y-[120px] md:space-y-4  md:space-x-4 px-18 justify-evenly mt-10'>
       <Head>
         <title>Weathy</title>
         <meta name="description" content="a weather app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className='flex h-[50px] absolute -top-2 left-6'>
+        <h1 className='text-4xl tracking-wide font-poppins justify-start'>Weathy  </h1>
+        <Image src='/imgs/warm.png'  height={50} width={60} />
+      </div>
 
       {/* // User Input */}
       <div className='h-20 w-[300px]'>
@@ -60,7 +64,7 @@ export default function Home() {
                                 "
             placeholder="City"
           />
-          <button className='border-gray h-8 w-40 py-2 px-4 rounded-lg' onClick={() => setClick(!click)}>Get Weather!</button>
+          <button className='border-gray h-8 w-36 py-1 px-4 rounded-lg hover:ring-1 ring-offset-cyan-800 hover:ring-emerald-500 hover:shadow-xl transform hover:scale-105 transition duration-200' onClick={() => setClick(!click)}>Get Weather!</button>
         </div>
       </div>
 
